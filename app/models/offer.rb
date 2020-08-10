@@ -1,4 +1,5 @@
 class Offer < ApplicationRecord
+  enum offer: [:pending, :accepted, :rejected]
   belongs_to :salesman, class_name: 'User', foreign_key: :salesman_id
   belongs_to :client, class_name: 'User', foreign_key: :client_id
   

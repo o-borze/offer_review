@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 2020_08_10_111146) do
     t.decimal "price", precision: 10, scale: 2
     t.string "type"
     t.integer "quantity"
+    t.bigint "offer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_products_on_offer_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

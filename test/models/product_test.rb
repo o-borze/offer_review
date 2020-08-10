@@ -6,4 +6,19 @@ class ProductTest < ActiveSupport::TestCase
     FactoryBot.create(:mailer_box)
     assert_equal 2, Product.count
   end
+  
+  test "quantity validation" do
+    assert_raise ActiveRecord::RecordInvalid do
+      FactoryBot.create(:poly_mailer, quantity: PolyMailer::MAX_QUANTITY + 25)
+    end
+    assert_raise ActiveRecord::RecordInvalid do
+      FactoryBot.create(:poly_mailer, quantity: PolyMailer::MIN_QUANTITY - 25)
+    end
+    assert_raise ActiveRecord::RecordInvalid do
+      FactoryBot.create(:mailer_box, quantity: MailerBox::MAX_QUANTITY + 25)
+    end
+    assert_raise ActiveRecord::RecordInvalid do
+      FactoryBot.create(:mailer_box, quantity: MailerBox::MIN_QUANTITY - 25)
+    end
+  end
 end

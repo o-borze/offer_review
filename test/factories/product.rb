@@ -3,5 +3,6 @@ FactoryBot.define do
     price { "9.99" }
     type { "" }
     quantity { 1 }
+    offer
   end
 end

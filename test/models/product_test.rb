@@ -28,4 +28,9 @@ class ProductTest < ActiveSupport::TestCase
     mailer = MailerBox.create
     assert_equal "MailerBox", mailer.type
   end
+  
+  test "product attribute getters" do
+    attribute = FactoryBot.create(:product_attribute, :height)
+    assert_equal attribute.value.to_i, attribute.product.height
+  end
 end

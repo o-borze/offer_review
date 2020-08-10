@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_121855) do
   create_table "product_attributes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "value"
-    t.string "type"
+    t.string "data_type"
     t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

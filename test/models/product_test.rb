@@ -21,4 +21,11 @@ class ProductTest < ActiveSupport::TestCase
       FactoryBot.create(:mailer_box, quantity: MailerBox::MIN_QUANTITY - 25)
     end
   end
+  
+  test "initialize type" do
+    mailer = PolyMailer.create
+    assert_equal "PolyMailer", mailer.type
+    mailer = MailerBox.create
+    assert_equal "MailerBox", mailer.type
+  end
 end

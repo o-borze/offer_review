@@ -33,4 +33,12 @@ class ProductTest < ActiveSupport::TestCase
     attribute = FactoryBot.create(:product_attribute, :height)
     assert_equal attribute.value.to_i, attribute.product.height
   end
+  
+  test "price calculation" do
+    product = FactoryBot.create(:poly_mailer, quantity: 50)
+    FactoryBot.create(:product_attribute, :height, value: "50", product: product)
+    FactoryBot.create(:product_attribute, :width, value: "50", product: product)
+    FactoryBot.create(:product_attribute, :material, value: "transparent", product: product)
+    assert_equal 1250, product.price.to_i
+  end
 end

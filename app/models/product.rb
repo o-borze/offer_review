@@ -1,8 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :offer
+  has_many :product_attributes
   
-  after_initialize :set_product_type
-  
+  attribute :type, :string, default: -> { self.class.name }
+    
   validate :is_quantity_in_range?
   
   def get_min_quantity
@@ -17,9 +18,5 @@ class Product < ApplicationRecord
     unless (get_min_quantity..get_max_quantity).include?(quantity)
       errors.add(:quantity, "must be between #{get_min_quantity} and #{get_max_quantity}")
     end
-  end
-  
-  def set_product_type
-    self.type = self.class.name
   end
 end
